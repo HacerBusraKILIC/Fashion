@@ -1,11 +1,23 @@
 import * as React from 'react';
-import {View, StyleSheet, Text, Dimensions, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  ImageRequireSource,
+} from 'react-native';
+// Theme Components
+import {Text} from '../../components';
 // interface
 interface SlideProps {
   key: number;
   title: String;
   right?: boolean;
-  picture: number;
+  picture: {
+    src: ImageRequireSource;
+    width: number;
+    height: number;
+  };
 }
 export const BORDER_RADIUS = 75;
 // Slide
@@ -17,39 +29,19 @@ const Slide = ({title, right, picture}: SlideProps) => {
   ];
   return (
     <View style={styles.container}>
-      <View style={styles.underlay}>
-        <Image source={picture} style={styles.image} />
-      </View>
       <View style={[styles.titleContainer, {transform}]}>
-        <Text style={styles.title}>{title}</Text>
+        <Text variant="hero">{title}</Text>
       </View>
     </View>
   );
 };
 const {width, height} = Dimensions.get('window');
-export const SLIDE_HEIGHT = 0.57 * height;
+export const SLIDE_HEIGHT = 0.55 * height;
 const styles = StyleSheet.create({
   container: {width, overflow: 'hidden'},
   titleContainer: {
     height: 100,
     justifyContent: 'center',
-  },
-  underlay: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-  },
-  image: {
-    ...StyleSheet.absoluteFillObject,
-    width: undefined,
-    height: undefined,
-    borderBottomRightRadius: BORDER_RADIUS,
-  },
-  title: {
-    fontSize: 80,
-    fontWeight: '700',
-    color: 'white',
-    textAlign: 'center',
-    lineHeight: 80,
   },
 });
 export default Slide;

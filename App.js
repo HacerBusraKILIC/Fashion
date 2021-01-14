@@ -1,27 +1,33 @@
-import 'react-native-gesture-handler';
 import * as React from 'react';
+// Modules
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Onboarding} from './src/Authentication';
-import {LoadAssets} from './src/components';
-
+import {
+  AuthenticationNavigator,
+  assets as authenticationAssets,
+} from './src/Authentication';
+import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+// Components
+import {LoadAssets, theme} from './src/components';
+// Theme Components
+import {ThemeProvider} from '@shopify/restyle';
+// Assets
+const assets = [...authenticationAssets];
+// Fonts
 const fonts = {
-  'SFProText-Regular': require('./assets/fonts/FontsFree-Net-SFProText-Regular.ttf'),
-};
-
-const AuthenticationStack = createStackNavigator();
-const AuthenticationContainer = () => {
-  return (
-    <AuthenticationStack.Navigator headerMode="none">
-      <AuthenticationStack.Screen name="OnBoarding" component={Onboarding} />
-    </AuthenticationStack.Navigator>
-  );
+  'SFProDisplay-Regular': require('./assets/fonts/SFProDisplay-Regular.ttf'),
+  'SFProDisplay-Bold': require('./assets/fonts/SFProDisplay-Bold.ttf'),
+  'SFProDisplay-Semibold': require('./assets/fonts/SFProDisplay-Semibold.ttf'),
 };
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <AuthenticationContainer />
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <AuthenticationNavigator />
+        </SafeAreaProvider>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
