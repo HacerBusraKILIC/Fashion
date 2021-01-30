@@ -2,7 +2,7 @@ import * as React from 'react';
 // Modules
 import Svg, {Path} from 'react-native-svg';
 // Components
-import theme, {Box} from '../../components/Theme';
+import {Box, useTheme} from '../../components/Theme';
 // Icons
 const Google = () => (
   <Svg
@@ -51,7 +51,7 @@ interface SocialIconProps {
   children: React.ReactNode;
 }
 const SocialIcon = ({children}: SocialIconProps) => {
-  //  const theme = userTheme();
+  const theme = useTheme();
   const SIZE = theme.borderRadii.l * 2;
   return (
     <Box

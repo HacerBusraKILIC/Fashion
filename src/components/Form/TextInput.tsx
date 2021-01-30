@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 // Modules
 import {
   StyleSheet,
@@ -6,56 +6,61 @@ import {
   TextInputProps as RNTextInputProps,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import theme, {Box} from '../Theme';
+import {Box, useTheme} from '../Theme';
 // Interface
 interface TextInputProps extends RNTextInputProps {
   icon: string;
   touched?: boolean;
   errors?: string;
 }
-const SIZE = theme.borderRadii.m * 2;
 // TextInput
-const TextInput = ({icon, touched, errors, ...props}: TextInputProps) => {
-  const reColor = !touched ? 'text' : errors ? 'danger' : 'primary';
-  const color = theme.colors[reColor];
-  return (
-    <Box
-      flexDirection="row"
-      height={48}
-      alignItems="center"
-      borderRadius="s"
-      borderWidth={StyleSheet.hairlineWidth}
-      borderColor={reColor}>
-      <Box padding="s">
-        <Icon name={icon} size={16} {...{color}} />
-      </Box>
-      <Box flex={1}>
-        <RNTextInput
-          underlineColorAndroid="transparent"
-          placeholderTextColor={color}
-          {...props}
-        />
-      </Box>
-
-      {touched && (
-        <Box
-          borderRadius="l"
-          margin="s"
-          height={SIZE}
-          width={SIZE}
-          justifyContent="center"
-          alignItems="center"
-          backgroundColor={!errors ? 'primary' : 'danger'}>
-          <Icon
-            name={!errors ? 'checkmark-outline' : 'close-outline'}
-            color="white"
-            size={12}
+const TextInput = forwardRef<RNTextInput, TextInputProps>(
+  ({icon, touched, errors, ...props}, ref) => {
+    const theme = useTheme();
+    const SIZE = theme.borderRadii.m * 2.5;
+    const reColor = !touched ? 'text' : errors ? 'danger' : 'primary';
+    const color = theme.colors[reColor];
+    return (
+      <Box
+        flexDirection="row"
+        height={48}
+        alignItems="center"
+        borderRadius="s"
+        borderWidth={StyleSheet.hairlineWidth}
+        borderColor={reColor}>
+        <Box padding="s">
+          <Icon name={icon} size={16} {...{color}} />
+        </Box>
+        <Box flex={1}>
+          <RNTextInput
+            underlineColorAndroid="transparent"
+            placeholderTextColor={color}
+            {...{ref}}
+            {...props}
           />
         </Box>
-      )}
-    </Box>
-  );
-};
+
+        {touched && (
+          <Box
+            margin="s"
+            height={SIZE}
+            width={SIZE}
+            justifyContent="center"
+            alignItems="center"
+            backgroundColor={!errors ? 'primary' : 'danger'}
+            style={{borderRadius: SIZE / 2}}>
+            <Icon
+              name={!errors ? 'checkmark-outline' : 'close-outline'}
+              color="white"
+              size={16}
+              style={{textAlign: 'center'}}
+            />
+          </Box>
+        )}
+      </Box>
+    );
+  },
+);
 
 export default TextInput;
 

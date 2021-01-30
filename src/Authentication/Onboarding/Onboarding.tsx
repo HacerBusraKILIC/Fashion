@@ -15,8 +15,8 @@ import {
 import Slide, {SLIDE_HEIGHT} from './Slide';
 import Dot from './Dot';
 import Subslide from './Subslide';
-import {theme} from '../../components';
 import {Routes, StackNavigationProps} from '../../components/Navigation';
+import {makeStyles, useTheme} from '../../components';
 // Contracts
 const {width} = Dimensions.get('window');
 const slides = [
@@ -76,6 +76,8 @@ const Onboarding = ({
 }: StackNavigationProps<Routes, 'Onboarding'>) => {
   const scroll = React.useRef<Animated.ScrollView>(null);
   const {scrollHandler, x} = useScrollHandler();
+  const theme = useTheme();
+  const styles = useStyles();
 
   const backgroundColor = interpolateColor(x, {
     inputRange: slides.map((_, i) => i * width),
@@ -164,7 +166,7 @@ const Onboarding = ({
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
   container: {flex: 1, backgroundColor: 'white'},
   slider: {
     height: SLIDE_HEIGHT,
@@ -190,5 +192,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-});
+}));
 export default Onboarding;

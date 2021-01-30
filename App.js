@@ -8,9 +8,10 @@ import {
 import 'react-native-gesture-handler';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 // Components
-import {LoadAssets, theme} from './src/components';
+import {LoadAssets} from './src/components';
 // Theme Components
 import {ThemeProvider} from '@shopify/restyle';
+import {theme} from './src/components/Theme';
 // Assets
 const assets = [...authenticationAssets];
 // Fonts

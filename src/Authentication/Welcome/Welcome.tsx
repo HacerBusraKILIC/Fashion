@@ -4,7 +4,7 @@ import {StyleSheet, Image, Dimensions} from 'react-native';
 // Components
 import {Button} from '../../components';
 import {Routes, StackNavigationProps} from '../../components/Navigation';
-import theme, {Box, Text} from '../../components/Theme';
+import {Box, Text, useTheme} from '../../components/Theme';
 // Contracts
 const {width} = Dimensions.get('window');
 // Welcome
@@ -16,6 +16,7 @@ const picture = {
 // Export Welcome Assets
 export const assets = [picture.src];
 const Welcome = ({navigation}: StackNavigationProps<Routes, 'Welcome'>) => {
+  const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
       <Box
