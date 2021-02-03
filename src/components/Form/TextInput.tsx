@@ -6,6 +6,7 @@ import {
   TextInputProps as RNTextInputProps,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import RoundedIcon from '../RoundedIcon';
 import {Box, useTheme} from '../Theme';
 // Interface
 interface TextInputProps extends RNTextInputProps {
@@ -41,21 +42,12 @@ const TextInput = forwardRef<RNTextInput, TextInputProps>(
         </Box>
 
         {touched && (
-          <Box
-            margin="s"
-            height={SIZE}
-            width={SIZE}
-            justifyContent="center"
-            alignItems="center"
+          <RoundedIcon
+            name={!errors ? 'checkmark-outline' : 'close-outline'}
             backgroundColor={!errors ? 'primary' : 'danger'}
-            style={{borderRadius: SIZE / 2}}>
-            <Icon
-              name={!errors ? 'checkmark-outline' : 'close-outline'}
-              color="white"
-              size={16}
-              style={{textAlign: 'center'}}
-            />
-          </Box>
+            color="white"
+            size={SIZE}
+          />
         )}
       </Box>
     );

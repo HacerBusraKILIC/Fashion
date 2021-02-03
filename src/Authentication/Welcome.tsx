@@ -2,14 +2,14 @@ import * as React from 'react';
 // Modules
 import {StyleSheet, Image, Dimensions} from 'react-native';
 // Components
-import {Button} from '../../components';
-import {Routes, StackNavigationProps} from '../../components/Navigation';
-import {Box, Text, useTheme} from '../../components/Theme';
+import {Button} from '../components';
+import {Routes, StackNavigationProps} from '../components/Navigation';
+import {Box, Text, useTheme} from '../components/Theme';
 // Contracts
 const {width} = Dimensions.get('window');
 // Welcome
 const picture = {
-  src: require('../assets/5.png'),
+  src: require('./assets/5.png'),
   width: 3383,
   height: 5074,
 };

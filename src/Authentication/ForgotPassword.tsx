@@ -11,28 +11,16 @@ import {Box, Button, Container, Text} from '../components';
 import {Routes, StackNavigationProps} from '../components/Navigation';
 
 const ForgotPasswordSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required'),
   email: Yup.string().email('Invalid email').required('Required'),
 });
 // ForgotPassword
 const ForgotPassword = ({
   navigation,
 }: StackNavigationProps<Routes, 'ForgotPassword'>) => {
-  const {
-    handleChange,
-    handleBlur,
-    handleSubmit,
-    values,
-    errors,
-    touched,
-    setFieldValue,
-  } = useFormik({
+  const {handleChange, handleBlur, handleSubmit, errors, touched} = useFormik({
     initialValues: {email: ''},
     validationSchema: ForgotPasswordSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: () => navigation.navigate('PasswordChanged'),
   });
   const footer = (
     <Footer
@@ -42,7 +30,7 @@ const ForgotPassword = ({
     />
   );
   return (
-    <Container {...{footer}}>
+    <Container pattern={2} {...{footer}}>
       <Box padding="xl" alignSelf="center">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Forgot password?
