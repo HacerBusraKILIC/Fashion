@@ -1,5 +1,5 @@
 import React from 'react';
-import {RectButton} from 'react-native-gesture-handler';
+import {BorderlessButton} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 // Modules
 import {Box, Text} from '../Theme';
@@ -13,7 +13,9 @@ interface CheckBoxProps {
 // CheckBox
 const CheckBox = ({label, onChange, checked}: CheckBoxProps) => {
   return (
-    <RectButton onPress={() => onChange()} style={{justifyContent: 'center'}}>
+    <BorderlessButton
+      onPress={() => onChange()}
+      style={{justifyContent: 'center'}}>
       <Box flexDirection="row">
         <Box
           width={20}
@@ -29,7 +31,7 @@ const CheckBox = ({label, onChange, checked}: CheckBoxProps) => {
         </Box>
         <Text variant="button">{label}</Text>
       </Box>
-    </RectButton>
+    </BorderlessButton>
   );
 };
 

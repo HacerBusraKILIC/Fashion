@@ -3,7 +3,14 @@ import * as React from 'react';
 import {StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // Components
-import {Box, Button, Container, Text, CloseButton} from '../components';
+import {
+  Box,
+  Button,
+  Container,
+  Text,
+  RoundedIconButton,
+  RoundedIcon,
+} from '../components';
 import {Routes, StackNavigationProps} from '../components/Navigation';
 // PasswordChanged
 const SIZE = 80;
@@ -15,20 +22,23 @@ const PasswordChanged = ({
       pattern={0}
       footer={
         <Box flexDirection="row" justifyContent="center">
-          <CloseButton onPress={() => navigation.pop()} />
+          <RoundedIconButton
+            name="close"
+            color="secondary"
+            backgroundColor="white"
+            size={60}
+            onPress={() => navigation.pop()}
+          />
         </Box>
       }>
-      <Box flex={1} justifyContent="center" alignItems="center">
-        <Box
+      <Box flex={1} justifyContent="center" alignItems="center" padding="xl">
+        <RoundedIcon
+          name="checkmark"
           backgroundColor="primaryLight"
-          justifyContent="center"
-          alignItems="center"
-          marginBottom="xl"
-          style={{height: SIZE, width: SIZE, borderRadius: SIZE / 2}}>
-          <Text color="primary" textAlign="center">
-            <Icon name="checkmark" size={32} />
-          </Text>
-        </Box>
+          color="primary"
+          size={SIZE}
+        />
+
         <Text variant="title1" textAlign="center" marginVertical="l">
           Your password was succesfully changed
         </Text>

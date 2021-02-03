@@ -4,6 +4,7 @@ import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {TextInput as RNTextInput} from 'react-native';
 import {Routes, StackNavigationProps} from '../components/Navigation';
+import {BorderlessButton} from 'react-native-gesture-handler';
 // Components
 import Container from '../components/Container';
 import {Button, Text} from '../components';
@@ -39,7 +40,7 @@ const Login = ({navigation}: StackNavigationProps<Routes, 'Login'>) => {
   } = useFormik({
     initialValues: {email: '', password: '', remember: true},
     validationSchema: LoginSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: () => navigation.navigate('Home'),
   });
   const password = useRef<RNTextInput>(null);
   return (
@@ -83,17 +84,22 @@ const Login = ({navigation}: StackNavigationProps<Routes, 'Login'>) => {
             onSubmitEditing={() => handleSubmit()}
             secureTextEntry
           />
-          <Box flexDirection="row" justifyContent="space-between">
+          <Box
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            marginVertical="s">
             <CheckBox
               label="Remember Me"
               checked={values.remember}
               onChange={() => setFieldValue('remember', !values.remember)}
             />
-            <Button
-              variant="transparent"
+            <BorderlessButton
               onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text color="primary">Forgot Password</Text>
-            </Button>
+              <Text variant="button" color="primary">
+                Forgot Password
+              </Text>
+            </BorderlessButton>
           </Box>
           <Box alignItems="center" marginTop="m">
             <Button

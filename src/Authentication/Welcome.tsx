@@ -1,6 +1,7 @@
 import * as React from 'react';
 // Modules
 import {StyleSheet, Image, Dimensions} from 'react-native';
+import {BorderlessButton} from 'react-native-gesture-handler';
 // Components
 import {Button} from '../components';
 import {Routes, StackNavigationProps} from '../components/Navigation';
@@ -59,8 +60,16 @@ const Welcome = ({navigation}: StackNavigationProps<Routes, 'Welcome'>) => {
             label="Have an account? Login"
             onPress={() => navigation.navigate('Login')}
           />
-          <Button label="Join us, it's Free" />
-          <Button variant="transparent" label="Forgot Password" />
+          <Button
+            label="Join us, it's Free"
+            onPress={() => navigation.navigate('SignUp')}
+          />
+          <BorderlessButton
+            onPress={() => navigation.navigate('ForgotPassword')}>
+            <Text variant="button" color="secondary">
+              Forgot Password?
+            </Text>
+          </BorderlessButton>
         </Box>
       </Box>
     </Box>

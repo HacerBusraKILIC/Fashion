@@ -1,10 +1,9 @@
 import React from 'react';
 // Components
-import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Box, Text, Theme} from './Theme';
 
-interface RoundedIconProps {
+export interface RoundedIconProps {
   name: string;
   size: number;
   color: keyof Theme['colors'];
@@ -18,6 +17,7 @@ const RoundedIcon = ({
   backgroundColor,
 }: RoundedIconProps) => {
   const iconSize = size * 0.7;
+
   return (
     <Box
       margin="s"
@@ -28,12 +28,7 @@ const RoundedIcon = ({
       style={{borderRadius: size / 2}}
       {...{backgroundColor}}>
       <Text style={{width: iconSize, height: iconSize}} {...{color}}>
-        <Icon
-          color="white"
-          size={iconSize}
-          style={{textAlign: 'center'}}
-          {...{name}}
-        />
+        <Icon size={iconSize} {...{name, color}} />
       </Text>
     </Box>
   );
