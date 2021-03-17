@@ -15,7 +15,7 @@ import {
 import Slide, {SLIDE_HEIGHT} from './Slide';
 import Dot from './Dot';
 import Subslide from './Subslide';
-import {Routes, StackNavigationProps} from '../../components/Navigation';
+import {AuthNavigationProps} from '../../components/Navigation';
 import {makeStyles, useTheme} from '../../components';
 // Contracts
 const {width} = Dimensions.get('window');
@@ -71,9 +71,7 @@ const slides = [
 ];
 export const assets = slides.map((slide) => slide.picture.src);
 // Onboarding
-const Onboarding = ({
-  navigation,
-}: StackNavigationProps<Routes, 'Onboarding'>) => {
+const Onboarding = ({navigation}: AuthNavigationProps<'Onboarding'>) => {
   const scroll = React.useRef<Animated.ScrollView>(null);
   const {scrollHandler, x} = useScrollHandler();
   const theme = useTheme();

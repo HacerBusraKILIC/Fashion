@@ -1,7 +1,6 @@
 import * as React from 'react';
 // Modules
 import {StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 // Components
 import {
   Box,
@@ -11,12 +10,12 @@ import {
   RoundedIconButton,
   RoundedIcon,
 } from '../components';
-import {Routes, StackNavigationProps} from '../components/Navigation';
+import {AuthNavigationProps} from '../components/Navigation';
 // PasswordChanged
 const SIZE = 80;
 const PasswordChanged = ({
   navigation,
-}: StackNavigationProps<Routes, 'PasswordChanged'>) => {
+}: AuthNavigationProps<'PasswordChanged'>) => {
   return (
     <Container
       pattern={0}
@@ -31,27 +30,27 @@ const PasswordChanged = ({
           />
         </Box>
       }>
-      <Box flex={1} justifyContent="center" alignItems="center" padding="xl">
+      <Box alignItems="center">
         <RoundedIcon
           name="checkmark"
           backgroundColor="primaryLight"
           color="primary"
           size={SIZE}
         />
+      </Box>
 
-        <Text variant="title1" textAlign="center" marginVertical="l">
-          Your password was succesfully changed
-        </Text>
-        <Text variant="body" opacity={0.5} textAlign="center" marginBottom="l">
-          Close this window and login again
-        </Text>
-        <Box alignItems="center" marginTop="m">
-          <Button
-            variant="primary"
-            onPress={() => navigation.navigate('Login')}
-            label="Login again"
-          />
-        </Box>
+      <Text variant="title1" textAlign="center" marginVertical="l">
+        Your password was succesfully changed
+      </Text>
+      <Text variant="body" opacity={0.5} textAlign="center" marginBottom="l">
+        Close this window and login again
+      </Text>
+      <Box alignItems="center" marginTop="m">
+        <Button
+          variant="primary"
+          onPress={() => navigation.navigate('Login')}
+          label="Login again"
+        />
       </Box>
     </Container>
   );

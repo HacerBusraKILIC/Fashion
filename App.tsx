@@ -1,32 +1,30 @@
 import * as React from 'react';
 // Modules
 import {NavigationContainer} from '@react-navigation/native';
+import {AppRoutes} from './src/components/Navigation';
+import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {createStackNavigator} from '@react-navigation/stack';
 import {
   AuthenticationNavigator,
   assets as authenticationAssets,
 } from './src/Authentication';
-import {HomeNavigator} from './src/Home';
-import 'react-native-gesture-handler';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {HomeNavigator, assets as homeAssets} from './src/Home';
 // Components
 import {LoadAssets} from './src/components';
 // Theme Components
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/components/Theme';
-import {createStackNavigator} from '@react-navigation/stack';
 // Assets
-const assets = [...authenticationAssets];
+const assets = [...authenticationAssets, homeAssets];
 // Fonts
 const fonts = {
   'SFProDisplay-Regular': require('./assets/fonts/SFProDisplay-Regular.ttf'),
   'SFProDisplay-Bold': require('./assets/fonts/SFProDisplay-Bold.ttf'),
   'SFProDisplay-Semibold': require('./assets/fonts/SFProDisplay-Semibold.ttf'),
 };
-type AppStackRoutes = {
-  Authentication: undefined;
-  Home: undefined;
-};
-const AppStack = createStackNavigator<AppStackRoutes>();
+
+const AppStack = createStackNavigator<AppRoutes>();
 
 export default function App() {
   return (

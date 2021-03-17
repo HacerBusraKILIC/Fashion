@@ -12,7 +12,10 @@ export const theme = {
     white: 'white',
     grey: '#F4F0EF',
     darkGrey: '#8A8D90',
-    pink: '#FFB6C1',
+    pink: '#ff69b4',
+    orange: '#ff8c00',
+    yellow: '#ffd800',
+    violet: '#8a2be2',
   },
   spacing: {
     s: 8,
@@ -52,6 +55,11 @@ export const theme = {
     button: {
       fontSize: 15,
       color: 'text',
+    },
+    header: {
+      fontSize: 12,
+      lineHeight: 24,
+      color: 'secondary',
     },
   },
   breakpoints: {},
