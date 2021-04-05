@@ -11,11 +11,13 @@ export const theme = {
     text: 'rgba(12,12,52,0.7)',
     white: 'white',
     grey: '#F4F0EF',
+    lightGrey: '#FAFAFA',
     darkGrey: '#8A8D90',
     pink: '#ff69b4',
-    orange: '#ff8c00',
+    orange: '#FE5E33',
     yellow: '#ffd800',
     violet: '#8a2be2',
+    lightBlue: '#BFEAF5',
   },
   spacing: {
     s: 8,
@@ -58,6 +60,7 @@ export const theme = {
     },
     header: {
       fontSize: 12,
+      fontWeight: 'bold',
       lineHeight: 24,
       color: 'secondary',
     },

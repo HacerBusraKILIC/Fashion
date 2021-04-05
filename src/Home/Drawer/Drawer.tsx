@@ -2,10 +2,9 @@ import React from 'react';
 // Modules
 import {Dimensions, Image} from 'react-native';
 // Components
-import {Box, Header, RoundedIconButton} from '../../components';
+import {Box, Header} from '../../components';
 import {Text, theme} from '../../components/Theme';
 import DrawerItem, {DrawerItemProps} from './DrawerItem';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 // Constract
 const {width} = Dimensions.get('window');
 export const DRAWER_WIDTH = width * 0.8;
@@ -59,7 +58,6 @@ const items: DrawerItemProps[] = [
       ),*/
 // Drawer
 const Drawer = () => {
-  //  const insets = useSafeAreaInsets();
   return (
     <Box flex={1}>
       <Box flex={0.2} backgroundColor="white">
@@ -69,11 +67,16 @@ const Drawer = () => {
           left={0}
           right={0}
           bottom={0}
+          borderBottomRightRadius="xl"
           backgroundColor="secondary">
           <Header
             title="MY PROFILE"
-            left={{icon: 'close', onPress: () => true}}
+            left={{
+              icon: 'close',
+              onPress: () => true,
+            }}
             right={{icon: 'cart', onPress: () => true}}
+            dark={true}
           />
         </Box>
       </Box>
@@ -86,6 +89,7 @@ const Drawer = () => {
           right={0}
           bottom={0}
           backgroundColor="white"
+          borderTopLeftRadius="xl"
           borderBottomRightRadius="xl"
           padding="xl">
           <Box
