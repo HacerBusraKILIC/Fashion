@@ -20,32 +20,32 @@ const items: DrawerItemProps[] = [
   },
   {
     icon: 'heart',
-    label: 'Favorite Outfits',
-    screen: 'FavoriteOutfits',
+    label: 'Favorites Outfits',
+    screen: 'FavoritesOutfits',
     color: 'orange',
   },
   {
     icon: 'person',
     label: 'Edit Profile',
-    screen: 'EditProfile',
+    screen: 'FavoritesOutfits',
     color: 'yellow',
   },
   {
     icon: 'time',
     label: 'Transaction History',
-    screen: 'TransactionHistory',
+    screen: 'FavoritesOutfits',
     color: 'pink',
   },
   {
     icon: 'settings',
     label: 'Notification Settings',
-    screen: 'NotificationSettings',
+    screen: 'FavoritesOutfits',
     color: 'violet',
   },
   {
     icon: 'log-out',
     label: 'Logout',
-    screen: 'Logout',
+    screen: 'FavoritesOutfits',
     color: 'secondary',
   },
 ];
@@ -110,7 +110,7 @@ const Drawer = () => {
             </Text>
           </Box>
           {items.map((item) => (
-            <DrawerItem key={item.screen} {...item} />
+            <DrawerItem key={item.icon} {...item} />
           ))}
         </Box>
       </Box>
