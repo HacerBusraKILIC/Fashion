@@ -12,7 +12,7 @@ export const theme = {
     white: 'white',
     grey: '#F4F0EF',
     lightGrey: '#FAFAFA',
-    darkGrey: '#8A8D90',
+    darkGrey: '#808080',
     pink: '#ff69b4',
     orange: '#FE5E33',
     yellow: '#ffd800',

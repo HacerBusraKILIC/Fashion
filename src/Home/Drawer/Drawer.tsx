@@ -33,7 +33,7 @@ const items: DrawerItemProps[] = [
   {
     icon: 'time',
     label: 'Transaction History',
-    screen: 'FavoritesOutfits',
+    screen: 'TransactionHistory',
     color: 'pink',
   },
   {
